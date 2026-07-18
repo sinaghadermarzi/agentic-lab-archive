@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-frameworks-patterns-lab"
+version = "0.1.0"
+description = "Offline-first notebooks for agentic frameworks and production patterns"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["jupyterlab>=4", "nbclient>=0.10", "nbformat>=5.10", "pytest>=8", "ruff>=0.6"]
+langgraph = ["langgraph>=0.2", "langchain-openai>=0.2"]
+openai-agents = ["openai-agents>=0.2"]
+pydanticai = ["pydantic-ai>=0.2"]
+google-adk = ["google-adk>=1.0"]
+microsoft-agent-framework = ["agent-framework>=0.1"]
+crewai = ["crewai>=0.80"]
+strands = ["strands-agents>=1.0"]
+llamaindex = ["llama-index-core>=0.12"]
+
+[tool.setuptools]
+packages = ["lab_core"]
+package-dir = {"lab_core" = "notebooks/lab_core"}
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
