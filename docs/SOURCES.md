@@ -10,6 +10,14 @@ The notebooks link directly to the following official documentation and original
 - [Reflexion: Language Agents with Verbal Reinforcement Learning](https://arxiv.org/abs/2303.11366)
 - [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)
 
+## Model Context Protocol
+
+- [MCP documentation](https://modelcontextprotocol.io/)
+- [MCP specification (2025-06-18)](https://modelcontextprotocol.io/specification/2025-06-18)
+- [MCP server quickstart](https://modelcontextprotocol.io/quickstart/server)
+- [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)
+- [Anthropic — Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
+
 ## Frameworks
 
 - [LangGraph install and Python docs](https://docs.langchain.com/oss/python/langgraph/install)
