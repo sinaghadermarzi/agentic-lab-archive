@@ -12,6 +12,7 @@ The lab keeps the durable ideas separate from fast-moving SDK syntax:
 - Runnable Python notebooks that default to deterministic, offline demonstrations.
 - Optional, clearly gated framework cells for LangGraph, OpenAI Agents SDK, PydanticAI, Google ADK, Microsoft Agent Framework, CrewAI, AWS Strands Agents, and LlamaIndex Workflows.
 - A framework comparison notebook with primary-source links, trade-offs, and an extensible adapter map for TypeScript ecosystems such as Mastra and Vercel AI SDK.
+- A Model Context Protocol (MCP) module: an offline teaching double of the protocol, plus a hands-on notebook that builds and consumes a real MCP server with the official SDK over stdio — no API key required.
 - Tests for the local pattern implementations and notebook integrity.
 - No API keys, private data, or generated credentials committed to the repository.
 
@@ -48,6 +49,8 @@ The notebooks are usable without an LLM provider. Live framework cells are skipp
 | `13_strands_agents.ipynb` | Model-driven agents and state | Optional live |
 | `14_llamaindex_workflows.ipynb` | Retrieval-oriented event workflows | Optional live |
 | `15_capstone_research_review.ipynb` | End-to-end hybrid architecture | Offline |
+| `16_mcp_concepts.ipynb` | Model Context Protocol roles, primitives, wire format | Offline |
+| `17_mcp_python_sdk.ipynb` | Build and consume an MCP server over stdio | Optional live (no API key) |
 
 ## Optional framework installs
 
@@ -62,6 +65,7 @@ pip install -e '.[microsoft-agent-framework]'
 pip install -e '.[crewai]'
 pip install -e '.[strands]'
 pip install -e '.[llamaindex]'
+pip install -e '.[mcp]'
 ```
 
 For live calls, set provider credentials in your shell or a local `.env` file that is not committed. See `.env.example`.

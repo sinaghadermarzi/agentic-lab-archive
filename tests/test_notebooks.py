@@ -25,6 +25,8 @@ class NotebookTests(unittest.TestCase):
             "13_strands_agents.ipynb",
             "14_llamaindex_workflows.ipynb",
             "15_capstone_research_review.ipynb",
+            "16_mcp_concepts.ipynb",
+            "17_mcp_python_sdk.ipynb",
         ]
         for name in expected:
             path = ROOT / "notebooks" / name
