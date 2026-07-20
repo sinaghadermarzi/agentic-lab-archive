@@ -39,11 +39,24 @@ Mastra, Vercel AI SDK, and Claude's tooling are included in the comparison noteb
 
 `15_capstone_research_review.ipynb` combines intake validation, routing, parallel research, evidence-backed synthesis, objective review, repair, checkpointing, and an approval gate. It is intentionally deterministic so that students can inspect every transition.
 
+## Track D — Interoperability: Model Context Protocol
+
+MCP is a protocol, not a framework: it standardizes the tool/resource/prompt boundary that
+every notebook in Track B wires up its own way. Lesson 16 needs only the core install and can
+be read any time after lesson 01; lesson 17 follows the Track B three-layer structure but its
+live example runs locally over stdio, so it needs the `mcp` extra and no API key.
+
+| Lesson | Focus | Requirement |
+| --- | --- | --- |
+| 16 | roles, tools/resources/prompts, JSON-RPC lifecycle, trust boundary | none (offline toy) |
+| 17 | FastMCP server, stdio client session, framework reuse | `pip install -e '.[mcp]'` |
+
 ## Suggested pace
 
 - **One afternoon:** 00–05.
 - **One day:** 06–09.
 - **One day:** 10–14, choosing only the frameworks relevant to your stack.
+- **One afternoon:** 16–17 for MCP, any time after 01.
 - **One project:** adapt the capstone to a real domain with synthetic data first.
 
 ## Extension rule

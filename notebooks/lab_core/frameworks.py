@@ -51,6 +51,12 @@ FRAMEWORKS = {
         "fit": "event-driven document, retrieval, and knowledge workflows",
         "source": "https://docs.llamaindex.ai/en/stable/module_guides/workflow/",
     },
+    "MCP Python SDK": {
+        "package": "mcp",
+        "extra": "mcp",
+        "fit": "open protocol for portable tool/resource/prompt servers across hosts",
+        "source": "https://modelcontextprotocol.io/",
+    },
     "Mastra": {
         "package": "(TypeScript)",
         "extra": "see docs",
