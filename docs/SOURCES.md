@@ -18,6 +18,20 @@ The notebooks link directly to the following official documentation and original
 - [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)
 - [Anthropic — Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 
+## Agent2Agent and the wider protocol landscape
+
+- [A2A specification](https://a2a-protocol.org/latest/specification/)
+- [A2A Python SDK](https://github.com/a2aproject/a2a-python)
+- [A2A samples (helloworld)](https://github.com/a2aproject/a2a-samples/tree/main/samples/python/agents/helloworld)
+- [Linux Foundation — A2A project launch](https://www.linuxfoundation.org/press/linux-foundation-launches-the-agent2agent-protocol-project-to-enable-secure-intelligent-communication-between-ai-agents)
+- [Linux Foundation — A2A one-year adoption milestone](https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year)
+- [LF AI & Data — ACP joins forces with A2A](https://lfaidata.foundation/communityblog/2025/08/29/acp-joins-forces-with-a2a-under-the-linux-foundations-lf-ai-data/)
+- [AG-UI protocol](https://github.com/ag-ui-protocol/ag-ui)
+- [AP2 — Agent Payments Protocol](https://github.com/google-agentic-commerce/AP2)
+- [AGNTCY (Linux Foundation)](https://github.com/agntcy)
+- [Agent Network Protocol](https://github.com/agent-network-protocol/AgentNetworkProtocol)
+- [Agent Client Protocol (Zed)](https://github.com/zed-industries/agent-client-protocol)
+
 ## Frameworks
 
 - [LangGraph install and Python docs](https://docs.langchain.com/oss/python/langgraph/install)

@@ -57,6 +57,12 @@ FRAMEWORKS = {
         "fit": "open protocol for portable tool/resource/prompt servers across hosts",
         "source": "https://modelcontextprotocol.io/",
     },
+    "A2A Python SDK": {
+        "package": "a2a",
+        "extra": "a2a",
+        "fit": "open protocol + SDK for agent-to-agent interop across vendors",
+        "source": "https://a2a-protocol.org/",
+    },
     "Mastra": {
         "package": "(TypeScript)",
         "extra": "see docs",
