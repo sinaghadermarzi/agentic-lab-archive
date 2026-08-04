@@ -10,7 +10,7 @@ The lab keeps the durable ideas separate from fast-moving SDK syntax:
 
 - A progressive curriculum from a local tool loop to multi-agent orchestration.
 - Runnable Python notebooks that default to deterministic, offline demonstrations.
-- Optional, clearly gated framework cells for LangGraph, OpenAI Agents SDK, PydanticAI, Google ADK, Microsoft Agent Framework, CrewAI, AWS Strands Agents, and LlamaIndex Workflows.
+- Optional, clearly gated framework cells for LangGraph, OpenAI Agents SDK, PydanticAI, Google ADK, Microsoft Agent Framework, CrewAI, AWS Strands Agents, LlamaIndex Workflows, Hugging Face smolagents, and Agno — with AutoGen and Semantic Kernel covered as lineage of Microsoft Agent Framework.
 - A framework comparison notebook with primary-source links, trade-offs, and an extensible adapter map for TypeScript ecosystems such as Mastra and Vercel AI SDK.
 - Protocol modules for MCP and A2A: offline teaching doubles of each protocol, hands-on notebooks with the official SDKs (stdio / localhost, no API keys required), and a sourced survey of the wider landscape (AG-UI, AP2, AGNTCY, ANP, and the two unrelated "ACP"s).
 - Tests for the local pattern implementations and notebook integrity.
@@ -54,6 +54,8 @@ The notebooks are usable without an LLM provider. Live framework cells are skipp
 | `18_a2a_concepts.ipynb` | Agent2Agent cards, task lifecycle, delegation | Offline |
 | `19_a2a_python_sdk.ipynb` | Build and consume an A2A agent over localhost | Optional live (no API key) |
 | `20_protocol_landscape.ipynb` | AG-UI, AP2, AGNTCY, ANP, ACP history | Offline |
+| `21_smolagents.ipynb` | Code-as-action agents, sandboxed execution | Optional live |
+| `22_agno.ipynb` | Agents, teams, and the AgentOS runtime | Optional live |
 
 ## Optional framework installs
 
@@ -68,6 +70,8 @@ pip install -e '.[microsoft-agent-framework]'
 pip install -e '.[crewai]'
 pip install -e '.[strands]'
 pip install -e '.[llamaindex]'
+pip install -e '.[smolagents]'
+pip install -e '.[agno]'
 pip install -e '.[mcp]'
 pip install -e '.[a2a]'
 ```

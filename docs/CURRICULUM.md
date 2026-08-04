@@ -32,8 +32,14 @@ Each framework notebook has three layers:
 | 12 | CrewAI | role-based crews plus event-driven flows |
 | 13 | AWS Strands Agents | model-driven AWS/Bedrock-centered agents |
 | 14 | LlamaIndex Workflows | document, retrieval, and knowledge-intensive workflows |
+| 21 | smolagents | minimal code-as-action agents with sandboxed execution |
+| 22 | Agno | agents, teams, and the AgentOS operational runtime |
 
-Mastra, Vercel AI SDK, and Claude's tooling are included in the comparison notebook as TypeScript/agent-harness extensions; this repository remains Python-first by design.
+AutoGen and Semantic Kernel are covered as lineage inside lesson 11: both are in maintenance
+mode and officially succeeded by Microsoft Agent Framework, so they get a concept mapping and
+migration links rather than their own lessons. Mastra, Vercel AI SDK, and the Claude Agent
+SDK are included in the comparison notebook as TypeScript/agent-harness extensions; this
+repository remains Python-first by design.
 
 ## Track C — Capstone
 
@@ -59,7 +65,7 @@ examples run locally (stdio / localhost), so they need an extra and no API key.
 
 - **One afternoon:** 00–05.
 - **One day:** 06–09.
-- **One day:** 10–14, choosing only the frameworks relevant to your stack.
+- **One day:** 10–14 and 21–22, choosing only the frameworks relevant to your stack.
 - **One day:** 16–20 for protocols — MCP any time after 01, A2A after 04.
 - **One project:** adapt the capstone to a real domain with synthetic data first.
 
