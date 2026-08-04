@@ -39,24 +39,28 @@ Mastra, Vercel AI SDK, and Claude's tooling are included in the comparison noteb
 
 `15_capstone_research_review.ipynb` combines intake validation, routing, parallel research, evidence-backed synthesis, objective review, repair, checkpointing, and an approval gate. It is intentionally deterministic so that students can inspect every transition.
 
-## Track D — Interoperability: Model Context Protocol
+## Track D — Interoperability protocols
 
-MCP is a protocol, not a framework: it standardizes the tool/resource/prompt boundary that
-every notebook in Track B wires up its own way. Lesson 16 needs only the core install and can
-be read any time after lesson 01; lesson 17 follows the Track B three-layer structure but its
-live example runs locally over stdio, so it needs the `mcp` extra and no API key.
+Protocols, not frameworks: they standardize the boundaries that every notebook in Track B
+wires up its own way — MCP for the tool boundary, A2A for the agent-to-agent boundary.
+Concept lessons need only the core install and can be read any time after lesson 01 (16) or
+lesson 04 (18). The SDK lessons follow the Track B three-layer structure but their live
+examples run locally (stdio / localhost), so they need an extra and no API key.
 
 | Lesson | Focus | Requirement |
 | --- | --- | --- |
-| 16 | roles, tools/resources/prompts, JSON-RPC lifecycle, trust boundary | none (offline toy) |
+| 16 | MCP roles, tools/resources/prompts, JSON-RPC lifecycle, trust boundary | none (offline toy) |
 | 17 | FastMCP server, stdio client session, framework reuse | `pip install -e '.[mcp]'` |
+| 18 | A2A Agent Cards, task lifecycle, artifacts, cross-wire delegation | none (offline toy) |
+| 19 | A2A AgentExecutor server, `create_client`, localhost JSON-RPC | `pip install -e '.[a2a]'` |
+| 20 | landscape survey: AG-UI, AP2, AGNTCY, ANP, ACP history | none (offline) |
 
 ## Suggested pace
 
 - **One afternoon:** 00–05.
 - **One day:** 06–09.
 - **One day:** 10–14, choosing only the frameworks relevant to your stack.
-- **One afternoon:** 16–17 for MCP, any time after 01.
+- **One day:** 16–20 for protocols — MCP any time after 01, A2A after 04.
 - **One project:** adapt the capstone to a real domain with synthetic data first.
 
 ## Extension rule
