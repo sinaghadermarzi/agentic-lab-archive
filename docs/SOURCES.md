@@ -44,6 +44,15 @@ The notebooks link directly to the following official documentation and original
 - [CrewAI](https://docs.crewai.com/)
 - [AWS Strands Agents](https://strandsagents.com/docs/user-guide/quickstart/overview/)
 - [LlamaIndex Workflows](https://docs.llamaindex.ai/en/stable/module_guides/workflow/)
+- [Hugging Face smolagents](https://huggingface.co/docs/smolagents)
+- [Agno](https://docs.agno.com/)
 - [Mastra](https://mastra.ai/docs)
 - [Vercel AI SDK agents](https://ai-sdk.dev/docs/agents)
+- [Claude Agent SDK (Python)](https://platform.claude.com/docs/en/agent-sdk/python)
 - [Claude platform tool runner](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner)
+
+## Framework lineage
+
+- [AutoGen → Microsoft Agent Framework migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen/)
+- [Semantic Kernel → Microsoft Agent Framework migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-semantic-kernel/)
+- [AG2 (community redesign of AutoGen)](https://github.com/ag2ai/ag2)
