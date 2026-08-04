@@ -21,6 +21,7 @@ crewai = ["crewai>=0.80"]
 strands = ["strands-agents>=1.0"]
 llamaindex = ["llama-index-core>=0.12"]
 mcp = ["mcp>=1.2"]
+a2a = ["a2a-sdk[http-server]>=1.1"]
 
 [tool.setuptools]
 packages = ["lab_core"]
