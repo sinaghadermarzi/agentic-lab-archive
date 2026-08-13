@@ -51,6 +51,14 @@ The notebooks link directly to the following official documentation and original
 - [Claude Agent SDK (Python)](https://platform.claude.com/docs/en/agent-sdk/python)
 - [Claude platform tool runner](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner)
 
+## Deep agents and context engineering
+
+- [LangChain — Deep Agents](https://www.langchain.com/blog/deep-agents)
+- [deepagents repository](https://github.com/langchain-ai/deepagents)
+- [deepagents documentation](https://docs.langchain.com/oss/python/deepagents/overview)
+- [Anthropic — Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- [Anthropic — How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
+
 ## Framework lineage
 
 - [AutoGen → Microsoft Agent Framework migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen/)
