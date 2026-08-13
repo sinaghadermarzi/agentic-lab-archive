@@ -61,12 +61,28 @@ examples run locally (stdio / localhost), so they need an extra and no API key.
 | 19 | A2A AgentExecutor server, `create_client`, localhost JSON-RPC | `pip install -e '.[a2a]'` |
 | 20 | landscape survey: AG-UI, AP2, AGNTCY, ANP, ACP history | none (offline) |
 
+## Track E — Deep agents
+
+The long-horizon architecture that emerged from Claude Code and Deep Research, named by
+LangChain's `deepagents`: the Track A tool loop plus four context disciplines. Lessons 23–25
+are fully offline and model the context window as a measurable object; lesson 26 follows the
+Track B three-layer structure (the `deepagents` policy is an LLM, so its example is
+shape-only behind the `deepagents` extra).
+
+| Lesson | Question | Pattern |
+| --- | --- | --- |
+| 23 | Why do long horizons change the architecture? | plan artifacts, filesystem offload, isolated sub-agents, skills |
+| 24 | How do the pillars compose? | plan-driven deep loop with measurable context economics |
+| 25 | How does a long run survive death? | checkpointed artifacts, resume-safe policies, compaction |
+| 26 | What does the framework own? | `create_deep_agent` defaults vs. your verification and gates |
+
 ## Suggested pace
 
 - **One afternoon:** 00–05.
 - **One day:** 06–09.
 - **One day:** 10–14 and 21–22, choosing only the frameworks relevant to your stack.
 - **One day:** 16–20 for protocols — MCP any time after 01, A2A after 04.
+- **One afternoon:** 23–26 for deep agents, after Tracks A and C.
 - **One project:** adapt the capstone to a real domain with synthetic data first.
 
 ## Extension rule

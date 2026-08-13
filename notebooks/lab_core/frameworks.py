@@ -63,6 +63,12 @@ FRAMEWORKS = {
         "fit": "event-driven document, retrieval, and knowledge workflows",
         "source": "https://docs.llamaindex.ai/en/stable/module_guides/workflow/",
     },
+    "LangChain Deep Agents": {
+        "package": "deepagents",
+        "extra": "deepagents",
+        "fit": "planning, filesystem offload, and sub-agent defaults for long-horizon agents on LangGraph",
+        "source": "https://docs.langchain.com/oss/python/deepagents/overview",
+    },
     "MCP Python SDK": {
         "package": "mcp",
         "extra": "mcp",
