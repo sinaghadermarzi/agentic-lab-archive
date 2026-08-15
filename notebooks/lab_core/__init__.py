@@ -1,4 +1,4 @@
-"""Small, dependency-free building blocks used by the offline lab notebooks."""
+"""Small, dependency-free building blocks used by the lab notebooks."""
 
 from .patterns import (
     ApprovalGate,

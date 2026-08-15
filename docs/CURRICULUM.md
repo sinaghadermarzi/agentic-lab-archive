@@ -55,17 +55,17 @@ examples run locally (stdio / localhost), so they need an extra and no API key.
 
 | Lesson | Focus | Requirement |
 | --- | --- | --- |
-| 16 | MCP roles, tools/resources/prompts, JSON-RPC lifecycle, trust boundary | none (offline toy) |
+| 16 | MCP roles, tools/resources/prompts, JSON-RPC lifecycle, trust boundary | none (deterministic toy) |
 | 17 | FastMCP server, stdio client session, framework reuse | `pip install -e '.[mcp]'` |
-| 18 | A2A Agent Cards, task lifecycle, artifacts, cross-wire delegation | none (offline toy) |
+| 18 | A2A Agent Cards, task lifecycle, artifacts, cross-wire delegation | none (deterministic toy) |
 | 19 | A2A AgentExecutor server, `create_client`, localhost JSON-RPC | `pip install -e '.[a2a]'` |
-| 20 | landscape survey: AG-UI, AP2, AGNTCY, ANP, ACP history | none (offline) |
+| 20 | landscape survey: AG-UI, AP2, AGNTCY, ANP, ACP history | none |
 
 ## Track E — Deep agents
 
 The long-horizon architecture that emerged from Claude Code and Deep Research, named by
 LangChain's `deepagents`: the Track A tool loop plus four context disciplines. Lessons 23–25
-are fully offline and model the context window as a measurable object; lesson 26 follows the
+are deterministic and model the context window as a measurable object; lesson 26 follows the
 Track B three-layer structure (the `deepagents` policy is an LLM, so its example is
 shape-only behind the `deepagents` extra).
 
@@ -82,7 +82,7 @@ shape-only behind the `deepagents` extra).
 | --- | --- | --- |
 | 27 | What is my agent doing right now? | span trees on the tool boundary; sinks into MLflow / Phoenix; find-or-start local UIs |
 
-The span layer (`lab_core.trace`) is offline and stdlib-only; the UI bridges need the `obs`
+The span layer (`lab_core.trace`) is stdlib-only; the UI bridges need the `obs`
 extra but no accounts or API keys. `notebooks/obs.py` is a deliberate twin of the dspy-lab
 course's helper of the same name.
 
@@ -92,7 +92,7 @@ Lesson 28 redeems the promise made in lesson 01: with the tool contracts, budget
 gates in place, the deterministic policies are swapped for a real LLM decision boundary via
 `notebooks/llm.py` — LiteLLM provider strings, OpenRouter default, one `.env` shared with
 the dspy-lab course. The mock path (`LiteLLM mock_response`) keeps the full code path
-testable offline; only the final cell needs a key.
+testable without credentials; only the final cell needs a key.
 
 ## Suggested pace
 

@@ -2,7 +2,7 @@
 
 MCP standardizes the boundary between a host application and the servers
 that expose tools, resources, and prompts to it. This module implements a
-small, offline subset of the protocol — JSON-RPC 2.0 messages, the
+small, self-contained subset of the protocol — JSON-RPC 2.0 messages, the
 initialize handshake, and the tools/resources/prompts primitives — so the
 wire format stays fully inspectable without a network or an SDK.
 
