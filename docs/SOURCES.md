@@ -59,6 +59,14 @@ The notebooks link directly to the following official documentation and original
 - [Anthropic — Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 - [Anthropic — How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
 
+## Observability
+
+Observability is engineering, not literature — the sources are tool documentation.
+
+- [MLflow tracing](https://mlflow.org/docs/latest/genai/tracing/)
+- [Arize Phoenix tracing](https://arize.com/docs/phoenix/tracing/llm-traces)
+- [OpenTelemetry traces](https://opentelemetry.io/docs/concepts/signals/traces/)
+
 ## Framework lineage
 
 - [AutoGen → Microsoft Agent Framework migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen/)

@@ -14,6 +14,7 @@ The lab keeps the durable ideas separate from fast-moving SDK syntax:
 - A framework comparison notebook with primary-source links, trade-offs, and an extensible adapter map for TypeScript ecosystems such as Mastra and Vercel AI SDK.
 - Protocol modules for MCP and A2A: offline teaching doubles of each protocol, hands-on notebooks with the official SDKs (stdio / localhost, no API keys required), and a sourced survey of the wider landscape (AG-UI, AP2, AGNTCY, ANP, and the two unrelated "ACP"s).
 - A deep-agents track: the four context disciplines for long-horizon work (plan artifacts, filesystem offloading, isolated sub-agents, skills) built offline with measurable context windows, an end-to-end run, interrupt/resume/compaction, and the `deepagents` package.
+- Observability: a ~100-line span tracer (`lab_core.trace`) that turns any tool loop or deep agent into a rendered span tree, plus `notebooks/obs.py` (ported from the dspy-lab course) bridging the same spans into MLflow and Arize Phoenix — local UIs found-or-started from a cell, no accounts, no API keys.
 - Tests for the local pattern implementations and notebook integrity.
 - No API keys, private data, or generated credentials committed to the repository.
 
@@ -61,6 +62,7 @@ The notebooks are usable without an LLM provider. Live framework cells are skipp
 | `24_deep_agent_run.ipynb` | A deep agent end to end, with context economics | Offline |
 | `25_deep_agent_survival.ipynb` | Interrupt, resume from artifacts, compaction | Offline |
 | `26_deepagents.ipynb` | LangChain deepagents harness | Optional live |
+| `27_observability.ipynb` | Span trees, MLflow and Phoenix tracing | Offline core + optional local UIs (no API key) |
 
 ## Optional framework installs
 
@@ -80,7 +82,10 @@ pip install -e '.[agno]'
 pip install -e '.[mcp]'
 pip install -e '.[a2a]'
 pip install -e '.[deepagents]'
+pip install -e '.[obs]'
 ```
+
+**Observability (optional).** Notebook 27 teaches tracing. Any notebook's run can be traced by attaching a `lab_core.trace.Tracer` (deep agents take a `tracer=` argument; plain tool loops use `tracer.wrap_tools(...)`) — `tracer.render()` prints the span tree with no installs at all. With the `obs` extra, `import obs` then `obs.enable_mlflow()` + `obs.mlflow_ui()` or `obs.enable_phoenix()` mirror the same spans into a local UI; the cell ends by printing the localhost link where the traces appear. The `obs.py` helper (ported from dspy-lab) makes this safe to leave and return to: sessions are dated (`agentic-lab-YYYY-MM-DD`) so days never collide, the MLflow store is pinned inside the repo (gitignored) and falls back cleanly if a remnant file is unusable, and the UIs are found-or-started from a cell — reusing a healthy server, skipping ports held by strangers. No terminal, no accounts, no extra API keys. Phoenix keeps its data in `~/.phoenix`.
 
 For live calls, set provider credentials in your shell or a local `.env` file that is not committed. See `.env.example`.
 

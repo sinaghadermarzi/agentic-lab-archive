@@ -76,6 +76,16 @@ shape-only behind the `deepagents` extra).
 | 25 | How does a long run survive death? | checkpointed artifacts, resume-safe policies, compaction |
 | 26 | What does the framework own? | `create_deep_agent` defaults vs. your verification and gates |
 
+## Track F — Operations
+
+| Lesson | Question | Pattern |
+| --- | --- | --- |
+| 27 | What is my agent doing right now? | span trees on the tool boundary; sinks into MLflow / Phoenix; find-or-start local UIs |
+
+The span layer (`lab_core.trace`) is offline and stdlib-only; the UI bridges need the `obs`
+extra but no accounts or API keys. `notebooks/obs.py` is a deliberate twin of the dspy-lab
+course's helper of the same name.
+
 ## Suggested pace
 
 - **One afternoon:** 00–05.
@@ -83,6 +93,7 @@ shape-only behind the `deepagents` extra).
 - **One day:** 10–14 and 21–22, choosing only the frameworks relevant to your stack.
 - **One day:** 16–20 for protocols — MCP any time after 01, A2A after 04.
 - **One afternoon:** 23–26 for deep agents, after Tracks A and C.
+- **One session:** 27 for observability, any time after 01.
 - **One project:** adapt the capstone to a real domain with synthetic data first.
 
 ## Extension rule
