@@ -2,7 +2,7 @@
 
 A2A standardizes the boundary *between* agents: discovery via Agent Cards,
 task lifecycle, and message/artifact exchange between peers that stay opaque
-to each other. This module implements a small offline subset of the v1.0
+to each other. This module implements a small self-contained subset of the v1.0
 JSON-RPC binding — ``SendMessage``, ``GetTask``, ``CancelTask``, the
 ``TASK_STATE_*`` lifecycle, and well-known-URI discovery — so every wire
 message stays inspectable without a network or an SDK.

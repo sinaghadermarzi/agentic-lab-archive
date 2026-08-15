@@ -12,7 +12,7 @@ notebooks 01–25 can be swapped for a live decision boundary.
 
 Every entry point takes a ``mock`` argument that routes through LiteLLM's
 ``mock_response`` — the full code path without a key or network — which is
-how the tests exercise this module and how notebook 28's offline cell works.
+how the tests exercise this module and how notebook 28's mocked cell works.
 """
 
 import getpass

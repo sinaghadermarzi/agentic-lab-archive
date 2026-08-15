@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "agentic-frameworks-patterns-lab"
 version = "0.1.0"
-description = "Offline-first notebooks for agentic frameworks and production patterns"
+description = "Runnable notebooks for agentic frameworks, protocols, and production patterns"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
@@ -25,6 +25,9 @@ agno = ["agno>=2.0"]
 deepagents = ["deepagents>=0.7"]
 obs = ["mlflow>=2.21.1", "arize-phoenix>=19.0"]
 llm = ["litellm>=1.60", "python-dotenv>=1.0"]
+all = [
+    "agentic-frameworks-patterns-lab[dev,langgraph,openai-agents,pydanticai,google-adk,microsoft-agent-framework,crewai,strands,llamaindex,smolagents,agno,deepagents,mcp,a2a,obs,llm]",
+]
 mcp = ["mcp>=1.2"]
 a2a = ["a2a-sdk[http-server]>=1.1"]
 
