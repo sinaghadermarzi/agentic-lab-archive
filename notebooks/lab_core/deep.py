@@ -214,7 +214,7 @@ class DeepAgent:
         name: str,
         *,
         system_prompt: str,
-        policy: Callable[[str, TodoList, list[dict[str, Any]]], Mapping[str, Any]],
+        policy: Callable[[str, TodoList, list[dict[str, Any]], Context], Mapping[str, Any]],
         tools: Mapping[str, Callable[[Any], Any]] | None = None,
         subagents: Sequence[SubAgent] = (),
         skills: Sequence[Skill] = (),
@@ -262,7 +262,9 @@ class DeepAgent:
 
         def adapter(goal: str, trace: list[dict[str, Any]]) -> Mapping[str, Any]:
             self.context.pin("todos", self.todos.render())  # the agent re-reads its plan
-            return self.policy(goal, self.todos, trace)
+            # The policy is the model-shaped boundary, so it receives the curated window:
+            # a live model policy renders it as the prompt (loaded skills included).
+            return self.policy(goal, self.todos, trace, self.context)
 
         with self._span(f"agent:{self.name}", goal=self.goal, run_id=run_id):
             return run_tool_loop(self.goal, adapter, self._wired_tools(run_id), max_steps=max_steps)

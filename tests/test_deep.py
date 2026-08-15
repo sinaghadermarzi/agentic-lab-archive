@@ -15,6 +15,9 @@ from lab_core.deep import (  # noqa: E402
 from lab_core.patterns import Budget, CheckpointStore, ToolLoopResult  # noqa: E402
 
 
+seen_contexts: list = []
+
+
 def build_agent(**overrides):
     fs = VirtualFS()
     fs.write("/sources/doc.md", "CLAIM: water is wet\nfiller " * 40)
@@ -25,7 +28,8 @@ def build_agent(**overrides):
         claims = [line for line in text.splitlines() if line.startswith("CLAIM:")]
         return {"summary": "; ".join(claims), "detail": text}
 
-    def policy(goal, todos, trace):
+    def policy(goal, todos, trace, context):
+        seen_contexts.append(context)
         if not todos.items:
             return {"tool": "write_todos", "input": {"add": ["digest doc", "write answer"]}}
         pending = todos.next_pending()
@@ -43,7 +47,10 @@ def build_agent(**overrides):
         if not evidence:
             return {"tool": "read_file", "input": {"path": "/subagents/reader-1.md"}}
         claims = [ln for obs in evidence for ln in str(obs).splitlines() if ln.startswith("CLAIM:")]
-        return {"tool": "write_file", "input": {"path": "/notes/answer.md", "text": "\n".join(claims)}}
+        return {
+            "tool": "write_file",
+            "input": {"path": "/notes/answer.md", "text": "\n".join(claims)},
+        }
 
     config = {
         "system_prompt": compose_system_prompt("You review sources."),
@@ -112,21 +119,29 @@ class DeepAgentTests(unittest.TestCase):
 
         report = SubAgent("helper", "Help out.", worker, fs).run("do a thing")
         self.assertNotIn("PARENT-ONLY", report.context.render())
-        self.assertEqual([e.label for e in report.context.entries], ["instructions", "task", "scratch"])
+        self.assertEqual(
+            [e.label for e in report.context.entries], ["instructions", "task", "scratch"]
+        )
         self.assertIn("long detail", fs.read(report.detail_path))
         self.assertNotIn("long detail", parent.render())
 
     def test_subagent_summary_is_capped(self):
         fs = VirtualFS()
-        agent = SubAgent("wordy", "Be brief.", lambda t, c, f: {"summary": "s" * 2000, "detail": ""}, fs)
+        agent = SubAgent(
+            "wordy", "Be brief.", lambda t, c, f: {"summary": "s" * 2000, "detail": ""}, fs
+        )
         report = agent.run("task")
         self.assertLessEqual(len(report.summary), agent.max_summary_chars + len(" …[truncated]"))
         self.assertTrue(report.summary.endswith("…[truncated]"))
 
     def test_deep_agent_completes_and_returns_patterns_result(self):
+        seen_contexts.clear()
         agent = build_agent()
         result = agent.run("review the doc", run_id="r1")
         self.assertIsInstance(result, ToolLoopResult)
+        # The policy receives the agent's live curated window (the Codex-reviewed seam):
+        self.assertIs(seen_contexts[0], agent.context)
+        self.assertIn("system", [e.label for e in seen_contexts[0].entries])
         self.assertTrue(result.completed)
         self.assertIsNone(agent.todos.next_pending())
         self.assertIn("CLAIM: water is wet", agent.fs.read("/notes/answer.md"))
@@ -146,7 +161,9 @@ class DeepAgentTests(unittest.TestCase):
     def test_observation_cap_and_budget_stop(self):
         agent = build_agent(max_observation_chars=50)
         agent.run("review the doc", run_id="r1")
-        capped = [e for e in agent.context.entries if e.label == "tool:read_file" or "chars]" in e.text]
+        capped = [
+            e for e in agent.context.entries if e.label == "tool:read_file" or "chars]" in e.text
+        ]
         self.assertTrue(any("…[+" in e.text for e in agent.context.entries))
         for entry in capped:
             self.assertLessEqual(len(entry.text), 50 + len(" …[+00000 chars]") + 4)
