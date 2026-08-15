@@ -44,6 +44,37 @@ The notebooks link directly to the following official documentation and original
 - [CrewAI](https://docs.crewai.com/)
 - [AWS Strands Agents](https://strandsagents.com/docs/user-guide/quickstart/overview/)
 - [LlamaIndex Workflows](https://docs.llamaindex.ai/en/stable/module_guides/workflow/)
+- [Hugging Face smolagents](https://huggingface.co/docs/smolagents)
+- [Agno](https://docs.agno.com/)
 - [Mastra](https://mastra.ai/docs)
 - [Vercel AI SDK agents](https://ai-sdk.dev/docs/agents)
+- [Claude Agent SDK (Python)](https://platform.claude.com/docs/en/agent-sdk/python)
 - [Claude platform tool runner](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner)
+
+## Deep agents and context engineering
+
+- [LangChain — Deep Agents](https://www.langchain.com/blog/deep-agents)
+- [deepagents repository](https://github.com/langchain-ai/deepagents)
+- [deepagents documentation](https://docs.langchain.com/oss/python/deepagents/overview)
+- [Anthropic — Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- [Anthropic — How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
+
+## Observability
+
+Observability is engineering, not literature — the sources are tool documentation.
+
+- [MLflow tracing](https://mlflow.org/docs/latest/genai/tracing/)
+- [Arize Phoenix tracing](https://arize.com/docs/phoenix/tracing/llm-traces)
+- [OpenTelemetry traces](https://opentelemetry.io/docs/concepts/signals/traces/)
+
+## LLM access
+
+- [LiteLLM supported providers](https://docs.litellm.ai/docs/providers)
+- [OpenRouter](https://openrouter.ai)
+- [OpenRouter model list](https://openrouter.ai/models)
+
+## Framework lineage
+
+- [AutoGen → Microsoft Agent Framework migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen/)
+- [Semantic Kernel → Microsoft Agent Framework migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-semantic-kernel/)
+- [AG2 (community redesign of AutoGen)](https://github.com/ag2ai/ag2)

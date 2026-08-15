@@ -45,11 +45,29 @@ FRAMEWORKS = {
         "fit": "model-driven agents with AWS/Bedrock integrations",
         "source": "https://strandsagents.com/docs/user-guide/quickstart/overview/",
     },
+    "smolagents": {
+        "package": "smolagents",
+        "extra": "smolagents",
+        "fit": "minimal code-first agents whose actions are Python snippets (CodeAgent)",
+        "source": "https://huggingface.co/docs/smolagents",
+    },
+    "Agno": {
+        "package": "agno",
+        "extra": "agno",
+        "fit": "agents and teams plus the AgentOS runtime/control plane for operating them",
+        "source": "https://docs.agno.com/",
+    },
     "LlamaIndex Workflows": {
         "package": "llama_index.core.workflow",
         "extra": "llamaindex",
         "fit": "event-driven document, retrieval, and knowledge workflows",
         "source": "https://docs.llamaindex.ai/en/stable/module_guides/workflow/",
+    },
+    "LangChain Deep Agents": {
+        "package": "deepagents",
+        "extra": "deepagents",
+        "fit": "planning, filesystem offload, and sub-agent defaults for long-horizon agents on LangGraph",
+        "source": "https://docs.langchain.com/oss/python/deepagents/overview",
     },
     "MCP Python SDK": {
         "package": "mcp",
@@ -75,11 +93,11 @@ FRAMEWORKS = {
         "fit": "TypeScript/Next.js tool loops, streaming UI, and workflow agents",
         "source": "https://ai-sdk.dev/docs/agents",
     },
-    "Claude tooling": {
-        "package": "anthropic (Python SDK)",
+    "Claude Agent SDK": {
+        "package": "claude_agent_sdk",
         "extra": "see docs",
-        "fit": "tool loops and long-running coding/computer-work agents",
-        "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner",
+        "fit": "harness-grade agent loop (Claude Code) as a library, with hooks and in-process MCP tools",
+        "source": "https://platform.claude.com/docs/en/agent-sdk/python",
     },
 }
 

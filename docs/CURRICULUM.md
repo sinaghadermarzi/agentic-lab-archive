@@ -32,8 +32,14 @@ Each framework notebook has three layers:
 | 12 | CrewAI | role-based crews plus event-driven flows |
 | 13 | AWS Strands Agents | model-driven AWS/Bedrock-centered agents |
 | 14 | LlamaIndex Workflows | document, retrieval, and knowledge-intensive workflows |
+| 21 | smolagents | minimal code-as-action agents with sandboxed execution |
+| 22 | Agno | agents, teams, and the AgentOS operational runtime |
 
-Mastra, Vercel AI SDK, and Claude's tooling are included in the comparison notebook as TypeScript/agent-harness extensions; this repository remains Python-first by design.
+AutoGen and Semantic Kernel are covered as lineage inside lesson 11: both are in maintenance
+mode and officially succeeded by Microsoft Agent Framework, so they get a concept mapping and
+migration links rather than their own lessons. Mastra, Vercel AI SDK, and the Claude Agent
+SDK are included in the comparison notebook as TypeScript/agent-harness extensions; this
+repository remains Python-first by design.
 
 ## Track C — Capstone
 
@@ -55,12 +61,48 @@ examples run locally (stdio / localhost), so they need an extra and no API key.
 | 19 | A2A AgentExecutor server, `create_client`, localhost JSON-RPC | `pip install -e '.[a2a]'` |
 | 20 | landscape survey: AG-UI, AP2, AGNTCY, ANP, ACP history | none (offline) |
 
+## Track E — Deep agents
+
+The long-horizon architecture that emerged from Claude Code and Deep Research, named by
+LangChain's `deepagents`: the Track A tool loop plus four context disciplines. Lessons 23–25
+are fully offline and model the context window as a measurable object; lesson 26 follows the
+Track B three-layer structure (the `deepagents` policy is an LLM, so its example is
+shape-only behind the `deepagents` extra).
+
+| Lesson | Question | Pattern |
+| --- | --- | --- |
+| 23 | Why do long horizons change the architecture? | plan artifacts, filesystem offload, isolated sub-agents, skills |
+| 24 | How do the pillars compose? | plan-driven deep loop with measurable context economics |
+| 25 | How does a long run survive death? | checkpointed artifacts, resume-safe policies, compaction |
+| 26 | What does the framework own? | `create_deep_agent` defaults vs. your verification and gates |
+
+## Track F — Operations
+
+| Lesson | Question | Pattern |
+| --- | --- | --- |
+| 27 | What is my agent doing right now? | span trees on the tool boundary; sinks into MLflow / Phoenix; find-or-start local UIs |
+
+The span layer (`lab_core.trace`) is offline and stdlib-only; the UI bridges need the `obs`
+extra but no accounts or API keys. `notebooks/obs.py` is a deliberate twin of the dspy-lab
+course's helper of the same name.
+
+## Going live (lesson 28)
+
+Lesson 28 redeems the promise made in lesson 01: with the tool contracts, budgets, and
+gates in place, the deterministic policies are swapped for a real LLM decision boundary via
+`notebooks/llm.py` — LiteLLM provider strings, OpenRouter default, one `.env` shared with
+the dspy-lab course. The mock path (`LiteLLM mock_response`) keeps the full code path
+testable offline; only the final cell needs a key.
+
 ## Suggested pace
 
 - **One afternoon:** 00–05.
 - **One day:** 06–09.
-- **One day:** 10–14, choosing only the frameworks relevant to your stack.
+- **One day:** 10–14 and 21–22, choosing only the frameworks relevant to your stack.
 - **One day:** 16–20 for protocols — MCP any time after 01, A2A after 04.
+- **One afternoon:** 23–26 for deep agents, after Tracks A and C.
+- **One session:** 27 for observability, any time after 01.
+- **One session:** 28 to go live, after 00–05.
 - **One project:** adapt the capstone to a real domain with synthetic data first.
 
 ## Extension rule

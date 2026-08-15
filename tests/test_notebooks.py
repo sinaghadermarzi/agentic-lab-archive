@@ -30,6 +30,14 @@ class NotebookTests(unittest.TestCase):
             "18_a2a_concepts.ipynb",
             "19_a2a_python_sdk.ipynb",
             "20_protocol_landscape.ipynb",
+            "21_smolagents.ipynb",
+            "22_agno.ipynb",
+            "23_deep_agents_concepts.ipynb",
+            "24_deep_agent_run.ipynb",
+            "25_deep_agent_survival.ipynb",
+            "26_deepagents.ipynb",
+            "27_observability.ipynb",
+            "28_live_llm_policy.ipynb",
         ]
         for name in expected:
             path = ROOT / "notebooks" / name
