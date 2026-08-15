@@ -86,6 +86,14 @@ The span layer (`lab_core.trace`) is offline and stdlib-only; the UI bridges nee
 extra but no accounts or API keys. `notebooks/obs.py` is a deliberate twin of the dspy-lab
 course's helper of the same name.
 
+## Going live (lesson 28)
+
+Lesson 28 redeems the promise made in lesson 01: with the tool contracts, budgets, and
+gates in place, the deterministic policies are swapped for a real LLM decision boundary via
+`notebooks/llm.py` — LiteLLM provider strings, OpenRouter default, one `.env` shared with
+the dspy-lab course. The mock path (`LiteLLM mock_response`) keeps the full code path
+testable offline; only the final cell needs a key.
+
 ## Suggested pace
 
 - **One afternoon:** 00–05.
@@ -94,6 +102,7 @@ course's helper of the same name.
 - **One day:** 16–20 for protocols — MCP any time after 01, A2A after 04.
 - **One afternoon:** 23–26 for deep agents, after Tracks A and C.
 - **One session:** 27 for observability, any time after 01.
+- **One session:** 28 to go live, after 00–05.
 - **One project:** adapt the capstone to a real domain with synthetic data first.
 
 ## Extension rule

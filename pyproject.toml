@@ -24,6 +24,7 @@ smolagents = ["smolagents>=1.20"]
 agno = ["agno>=2.0"]
 deepagents = ["deepagents>=0.7"]
 obs = ["mlflow>=2.21.1", "arize-phoenix>=19.0"]
+llm = ["litellm>=1.60", "python-dotenv>=1.0"]
 mcp = ["mcp>=1.2"]
 a2a = ["a2a-sdk[http-server]>=1.1"]
 

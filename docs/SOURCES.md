@@ -67,6 +67,12 @@ Observability is engineering, not literature — the sources are tool documentat
 - [Arize Phoenix tracing](https://arize.com/docs/phoenix/tracing/llm-traces)
 - [OpenTelemetry traces](https://opentelemetry.io/docs/concepts/signals/traces/)
 
+## LLM access
+
+- [LiteLLM supported providers](https://docs.litellm.ai/docs/providers)
+- [OpenRouter](https://openrouter.ai)
+- [OpenRouter model list](https://openrouter.ai/models)
+
 ## Framework lineage
 
 - [AutoGen → Microsoft Agent Framework migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen/)
