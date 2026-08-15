@@ -78,7 +78,7 @@ class TracerTests(unittest.TestCase):
     def test_deep_agent_emits_root_and_tool_spans_when_traced(self):
         tracer = Tracer(sinks=[RecordingSink()])
 
-        def policy(goal, todos, trace):
+        def policy(goal, todos, trace, context):
             if not todos.items:
                 return {"tool": "write_todos", "input": {"add": ["note"]}}
             if todos.next_pending() is None:
@@ -109,7 +109,7 @@ class TracerTests(unittest.TestCase):
         agent = DeepAgent(
             "plain",
             system_prompt="role",
-            policy=lambda goal, todos, trace: {"final": "ok"},
+            policy=lambda goal, todos, trace, context: {"final": "ok"},
         )
         self.assertTrue(agent.run("goal").completed)
         self.assertIsNone(agent.tracer)

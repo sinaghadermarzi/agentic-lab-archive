@@ -51,18 +51,43 @@ def model(strong: bool = False) -> str:
     return os.environ.get("MODEL") or DEFAULT_MODEL
 
 
+# Env var per LiteLLM provider prefix, for the providers this lab documents.
+_PROVIDER_KEYS = {
+    "openrouter": "OPENROUTER_API_KEY",
+    "openai": "OPENAI_API_KEY",
+    "anthropic": "ANTHROPIC_API_KEY",
+    "gemini": "GEMINI_API_KEY",
+    "groq": "GROQ_API_KEY",
+    "mistral": "MISTRAL_API_KEY",
+}
+_KEYLESS_PROVIDERS = {"ollama", "ollama_chat", "hosted_vllm", "lm_studio", "llamafile"}
+
+
+def _required_key() -> str | None:
+    """Env var the configured model's provider needs, or None if no key is required.
+
+    Providers outside the map are left to LiteLLM: a missing key then fails
+    loudly at call time rather than being silently skipped here.
+    """
+    provider = model().split("/", 1)[0]
+    if provider in _KEYLESS_PROVIDERS:
+        return None
+    return _PROVIDER_KEYS.get(provider)
+
+
 def ready() -> bool:
-    """True when a key for the configured model's provider is present."""
+    """True when the configured provider's own credentials are in place."""
     _load_env()
-    needed = "OPENROUTER_API_KEY" if model().startswith("openrouter/") else "OPENAI_API_KEY"
-    return bool(os.environ.get(needed) or os.environ.get("OPENROUTER_API_KEY"))
+    needed = _required_key()
+    return True if needed is None else bool(os.environ.get(needed))
 
 
 def configure() -> None:
-    """Interactive fallback, dspy-lab style: prompt for the key if .env lacks one."""
+    """Interactive fallback, dspy-lab style: prompt for the provider's key if missing."""
     _load_env()
-    if not ready():
-        os.environ["OPENROUTER_API_KEY"] = getpass.getpass("OpenRouter API key: ")
+    needed = _required_key()
+    if needed is not None and not os.environ.get(needed):
+        os.environ[needed] = getpass.getpass(f"{needed}: ")
     print(f"llm: model={model()!r} strong={model(strong=True)!r} ready={ready()}")
 
 

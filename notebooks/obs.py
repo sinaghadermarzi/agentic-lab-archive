@@ -114,8 +114,9 @@ def mlflow_sink():
             cm, mlspan = self._live.pop(id(span))
             try:
                 mlspan.set_attributes({k: str(v) for k, v in span.attributes.items()})
-                if span.error:
+                if span.error:  # failed spans must carry ERROR status, not just an attribute
                     mlspan.set_attribute("error", span.error)
+                    mlspan.set_status("ERROR")
             finally:
                 cm.__exit__(None, None, None)
 

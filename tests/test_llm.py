@@ -36,7 +36,22 @@ class LlmHelperTests(unittest.TestCase):
             self.assertEqual(llm.model(), "openai/gpt-4o-mini")
             self.assertTrue(llm.ready())
         with patch.dict("os.environ", {**CLEAN, "OPENROUTER_API_KEY": "k"}):
+            self.assertTrue(llm.ready())  # default model routes through OpenRouter
+
+    def test_ready_matches_the_configured_provider(self):
+        # An OpenRouter key must NOT satisfy a direct provider's credential check.
+        with patch.dict(
+            "os.environ", {**CLEAN, "MODEL": "openai/gpt-4o-mini", "OPENROUTER_API_KEY": "k"}
+        ):
+            self.assertFalse(llm.ready())
+        with patch.dict("os.environ", {**CLEAN, "MODEL": "anthropic/claude-sonnet-5"}):
+            self.assertFalse(llm.ready())
+        with patch.dict(
+            "os.environ", {**CLEAN, "MODEL": "anthropic/claude-sonnet-5", "ANTHROPIC_API_KEY": "k"}
+        ):
             self.assertTrue(llm.ready())
+        with patch.dict("os.environ", {**CLEAN, "MODEL": "ollama_chat/llama3"}):
+            self.assertTrue(llm.ready())  # local providers need no key
 
     @unittest.skipUnless(find_spec("litellm"), "litellm not installed")
     def test_complete_mock_runs_full_path_without_key(self):
