@@ -1,4 +1,5 @@
 import json
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -47,9 +48,18 @@ class NotebookTests(unittest.TestCase):
             self.assertGreaterEqual(len(notebook["cells"]), 2)
 
     def test_no_secret_like_files_are_tracked_in_tree(self):
-        self.assertFalse(list(ROOT.rglob(".env")))
-        self.assertFalse(list(ROOT.rglob("*.pem")))
-        self.assertFalse(list(ROOT.rglob("*.key")))
+        # Ask git, not the filesystem: a local .venv (per the README) or a personal
+        # .env (per notebook 28) must not fail the suite — only committed files count.
+        listing = subprocess.run(
+            ["git", "-C", str(ROOT), "ls-files"], capture_output=True, text=True
+        )
+        if listing.returncode != 0:
+            self.skipTest("not a git checkout")
+        tracked = listing.stdout.splitlines()
+        leaked = [
+            path for path in tracked if path.endswith((".pem", ".key")) or Path(path).name == ".env"
+        ]
+        self.assertFalse(leaked)
 
 
 if __name__ == "__main__":
