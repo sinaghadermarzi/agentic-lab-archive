@@ -36,6 +36,7 @@ class NotebookTests(unittest.TestCase):
             "24_deep_agent_run.ipynb",
             "25_deep_agent_survival.ipynb",
             "26_deepagents.ipynb",
+            "27_observability.ipynb",
         ]
         for name in expected:
             path = ROOT / "notebooks" / name

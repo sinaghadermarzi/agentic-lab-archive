@@ -16,10 +16,12 @@ involved anywhere.
 
 from __future__ import annotations
 
+from contextlib import nullcontext
 from dataclasses import dataclass, field
-from typing import Any, Callable, Mapping, Sequence
+from typing import Any, Callable, ContextManager, Mapping, Sequence
 
 from lab_core.patterns import Budget, CheckpointStore, ToolLoopResult, run_tool_loop
+from lab_core.trace import Tracer
 
 
 def estimate_tokens(text: str) -> int:
@@ -221,8 +223,10 @@ class DeepAgent:
         checkpoints: CheckpointStore | None = None,
         context_limit: int = 2000,
         max_observation_chars: int = 200,
+        tracer: Tracer | None = None,
     ) -> None:
         self.name = name
+        self.tracer = tracer
         self.system_prompt = system_prompt
         self.policy = policy
         self.extra_tools = dict(tools or {})
@@ -260,7 +264,15 @@ class DeepAgent:
             self.context.pin("todos", self.todos.render())  # the agent re-reads its plan
             return self.policy(goal, self.todos, trace)
 
-        return run_tool_loop(self.goal, adapter, self._wired_tools(run_id), max_steps=max_steps)
+        with self._span(f"agent:{self.name}", goal=self.goal, run_id=run_id):
+            return run_tool_loop(self.goal, adapter, self._wired_tools(run_id), max_steps=max_steps)
+
+    def _span(self, name: str, **attributes: Any) -> ContextManager[Any]:
+        """The observability seam: a real span when a tracer is attached, else a no-op."""
+
+        if self.tracer is None:
+            return nullcontext()
+        return self.tracer.span(name, **attributes)
 
     def _fresh_context(self) -> None:
         self.context = Context(owner=self.name)
@@ -299,9 +311,12 @@ class DeepAgent:
 
     def _observe(self, name: str, fn: Callable[[Any], Any], run_id: str) -> Callable[[Any], Any]:
         def wrapped(args: Any) -> Any:
-            if self.budget is not None:
-                self.budget.charge()
-            observation = fn(args)
+            with self._span(f"tool:{name}", input=str(args)[:120]) as span:
+                if self.budget is not None:
+                    self.budget.charge()
+                observation = fn(args)
+                if span is not None:
+                    span.attributes["observation_chars"] = len(str(observation))
             capped = str(observation)
             if len(capped) > self.max_observation_chars:
                 capped = (
